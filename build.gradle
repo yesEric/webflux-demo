@@ -9,10 +9,13 @@ buildscript {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
 }
-
+plugins {
+    id 'net.ltgt.apt' version '0.10'
+}
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+
 
 group = 'com.example.webfluxtest'
 version = '0.0.1-SNAPSHOT'
@@ -25,5 +28,10 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-webflux'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    
 	testImplementation 'io.projectreactor:reactor-test'
+
+    compileOnly 'org.projectlombok:lombok:1.18.2'
+
+    apt "org.projectlombok:lombok:1.18.2"
 }
